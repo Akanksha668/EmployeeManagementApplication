@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Edit Employee</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/style.css" />
+
+</head>
+<body>
+	<div class="container">
+		<h2>Edit Employee</h2>
+		<form th:action="@{/update/edit}" method="post">
+			<input type="hidden" name="id" th:value="${employee.id}" />
+
+			<div class="form-group">
+				<label for="name">Name:</label> <input type="text" id="name"
+					name="name" class="form-control" th:value="${employee.name}"
+					required />
+			</div>
+			<div class="form-group">
+				<label for="email">Email:</label> <input type="text" id="email"
+					name="email" class="form-control" th:value="${employee.email}"
+					required />
+			</div>
+			<div>
+				<label for="password">Password:</label> <input type="password"
+					id="password" name="password" class="form-control" required /> <small>Enter
+					current password or new password</small>
+			</div>
+
+			<div class="form-group">
+				<label for="department">Department:</label> <input type="text"
+					id="department" name="department" class="form-control"
+					th:value="${employee.department}" required />
+			</div>
+			<div class="form-group text-center">
+				<button type="submit" class="btn btn-custom">Save Changes</button>
+			</div>
+			<div th:if="${error}" class="error-message">
+				<p th:text="${error}"></p>
+			</div>
+		</form>
+		<div class="text-center">
+			<a href="/employees" class="btn btn-back">Back to Employee List</a>
+		</div>
+	</div>
+
+	
+</body>
+</html>

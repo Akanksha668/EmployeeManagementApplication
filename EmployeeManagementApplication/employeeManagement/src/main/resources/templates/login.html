@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+
+        <!-- Error message for incorrect credentials -->
+        <div th:if="${param.error}" class="alert alert-danger">
+            <span>Incorrect username or password. Please try again.</span>
+        </div>
+
+        <form action="/login" method="post" th:action="@{/login}" th:object="${loginForm}">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
+            <div class="form-outline">
+                <label class="form-label" for="username">Email:</label>
+                <input type="text" id="username" name="username" placeholder="Email" required/>
+            </div>
+            <div class="form-outline">
+                <label class="form-label" for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Password" required/>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+        </form>
+
+        <a href="/register">Register a new employee</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
